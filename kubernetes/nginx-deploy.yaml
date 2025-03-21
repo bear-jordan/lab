@@ -11,10 +11,7 @@ spec:
     matchLabels:
       app: nginx-deploy
   strategy:
-    type: RollingUpdate
-    rollingUpdate:
-      maxUnavailable: 1
-      maxSurge: 1
+    type: Recreate
   template:
     metadata:
       creationTimestamp: null
@@ -22,7 +19,7 @@ spec:
         app: nginx-deploy
     spec:
       containers:
-        - image: nginx
+        - image: nginx:mainline-alpine
           name: nginx
           resources: {}
 status: {}
