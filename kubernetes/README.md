@@ -11,3 +11,7 @@ In this toy example, I used a `kubectl` dry run to generate a minimal yaml confi
 ## nginx-deploy.yaml
 
 Scaling up a bit. Instead of just creating one pod, I'm making a whole deployment. Interesting to watch how the containers responded to an exit code of 1. They enter a CrashLoopBackoff and the changes are not applied to every container.
+
+## Mealie
+
+Checking out creating namespaces and using the [Mealie](https://hub.docker.com/r/hkotel/mealie) container.
