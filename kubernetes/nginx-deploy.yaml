@@ -24,5 +24,7 @@ spec:
       containers:
         - image: nginx
           name: nginx
+          command: ["/bin/bash", "-c"]
+          args: ["sleep 5; exit 1"] # simulate error
           resources: {}
 status: {}
