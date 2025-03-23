@@ -9,6 +9,13 @@ spec:
       volumeMounts:
         - mountPath: /cache
           name: cache-volume
+    - image: busybox
+      name: busybox
+      command: ["/bin/sh", "-c"]
+      args: ["sleep 1000"]
+      volumeMounts:
+        - mountPath: /cache
+          name: cache-volume
   volumes:
     - name: cache-volume
       emptyDir:
