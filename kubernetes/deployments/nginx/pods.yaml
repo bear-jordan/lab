@@ -9,6 +9,8 @@ spec:
       volumeMounts:
         - mountPath: /cache
           name: cache-volume
+        - mountPath: /app/data
+          name: persist
     - image: busybox
       name: busybox
       command: ["/bin/sh", "-c"]
@@ -16,7 +18,16 @@ spec:
       volumeMounts:
         - mountPath: /cache
           name: cache-volume
+        - mountPath: /persist
+          name: persistent-volume
   volumes:
+    - name: persist
+      persistentVolumeClaim:
+        claimName: persist
     - name: cache-volume
       emptyDir:
         sizeLimit: 500Mi
+    - name: persistent-volume
+      hostPath:
+        path: /tmp/rancher-volumes
+        type: DirectoryOrCreate
