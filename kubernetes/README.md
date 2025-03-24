@@ -4,13 +4,10 @@
 
 For simplicty, I have been using Rancher to create a sandbox Kubernetes cluster. It was fast to spin up and I've enjoyed working with it so far.
 
-## nginx.yaml
+## Nginx
 
-In this toy example, I used a `kubectl` dry run to generate a minimal yaml configuration for a pod and played around with some of the tags.
+I wanted to play around with basic networking. I made this nginx deployment. Learned that you can't expose ports under 1024 without root priviledges, so had to bump to a higher port.
 
-## nginx-deploy.yaml
-
-Scaling up a bit. Instead of just creating one pod, I'm making a whole deployment. Interesting to watch how the containers responded to an exit code of 1. They enter a CrashLoopBackoff and the changes are not applied to every container.
 
 ## Mealie
 
