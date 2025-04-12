@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: homepage
+  name: homepage
+  namespace: homepage
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: homepage
+  template:
+    metadata:
+      labels:
+        app: homepage
+    spec:
+      containers:
+        - image: ghcr.io/gethomepage/homepage:latest
+          name: homepage
+          env:
+            - name: HOMEPAGE_ALLOWED_HOSTS
+              value: 192.168.86.36:3000
+          ports:
+            - containerPort: 3000
+          volumeMounts:
+            - mountPath: /app/config
+              name: homepage-pvc
+      volumes:
+        - name: homepage-pvc
+          persistentVolumeClaim:
+            claimName: homepage-claim
